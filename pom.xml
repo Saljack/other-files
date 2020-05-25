@@ -11,6 +11,28 @@
     <netbeans.version>RELEASE113</netbeans.version>
   </properties>
 
+  <url>https://github.com/Saljack/other-files</url>
+
+  <licenses>
+    <license>
+      <name>Apache License 2.0</name>
+      <url>http://opensource.org/licenses/Apache-2.0</url>
+    </license>
+  </licenses>
+
+  <developers>
+    <developer>
+      <id>Saljack</id>
+    </developer>
+  </developers>
+
+  <scm>
+    <connection>scm:git:https://github.com/Saljack/other-files.git</connection>
+    <developerConnection>scm:git:https://github.com/Saljack/other-files.git</developerConnection>
+    <tag>HEAD</tag>
+    <url>https://github.com/Saljack/other-files</url>
+  </scm>
+
   <dependencies>
     <dependency>
       <groupId>org.netbeans.api</groupId>
@@ -55,6 +77,17 @@
   <build>
     <plugins>
       <plugin>
+        <groupId>org.sonatype.plugins</groupId>
+        <artifactId>nexus-staging-maven-plugin</artifactId>
+        <version>1.6.8</version>
+        <!--<extensions>true</extensions>-->
+        <configuration>
+          <serverId>ossrh</serverId>
+          <nexusUrl>https://oss.sonatype.org/</nexusUrl>
+          <autoReleaseAfterClose>true</autoReleaseAfterClose>
+        </configuration>
+      </plugin>
+      <plugin>
         <groupId>org.apache.netbeans.utilities</groupId>
         <artifactId>nbm-maven-plugin</artifactId>
         <version>4.3</version>
@@ -79,6 +112,34 @@
           </archive>
         </configuration>
       </plugin>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-gpg-plugin</artifactId>
+        <version>1.6</version>
+        <executions>
+          <execution>
+            <id>sign-artifacts</id>
+            <phase>verify</phase>
+            <goals>
+              <goal>sign</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
     </plugins>
   </build>
+
+
+  <distributionManagement>
+    <repository>
+      <id>ossrh</id>
+      <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+    </repository>
+    <snapshotRepository>
+      <id>ossrh</id>
+      <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+    </snapshotRepository>
+  </distributionManagement>
+
 </project>
