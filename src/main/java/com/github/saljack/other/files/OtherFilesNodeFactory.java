@@ -13,7 +13,7 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
-package org.saljack.other.files;
+package com.github.saljack.other.files;
 
 import java.util.ArrayList;
 import java.util.List;
